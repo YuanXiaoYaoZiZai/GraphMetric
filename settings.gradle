@@ -1,0 +1,8 @@
+rootProject.name = 'GraphMetric'
+
+include ':common-utils'
+include ':common-config'
+include ':common-cache'
+include ':graph-metric-common'
+include ':graph-metric-client'
+include ':graph-metric-server'

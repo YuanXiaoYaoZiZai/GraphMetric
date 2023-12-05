@@ -1,0 +1,33 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.2'
+    }
+}
+
+plugins {
+    id 'org.springframework.boot' version '2.1.7.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'com.github.johnrengelman.shadow'
+
+group = 'com.fsc.graph.common'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+jar.enabled=true
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compile project(':common-utils')
+    compile project(':common-config')
+    compile project(':common-cache')
+
+}

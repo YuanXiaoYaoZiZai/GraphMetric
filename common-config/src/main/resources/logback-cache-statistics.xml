@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<included>
+    <property name="LOG_CACHE_MODULE_PREFIX" value="rapid-cloud-cache"/>
+    <appender name="LOG-CACHE-STATISTICS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_PATH}/${LOG_CACHE_MODULE_PREFIX}-statistics.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${LOG_PATH}/${LOG_CACHE_MODULE_PREFIX}-%d{yyyyMMdd}-%i.log.gz</fileNamePattern>
+            <maxFileSize>300MB</maxFileSize>
+            <maxHistory>7</maxHistory>
+            <totalSizeCap>2GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{30} : %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+    <logger name="rapid.cloud.common.cache" level="INFO" additivity="false">
+        <appender-ref ref="LOG-CACHE-STATISTICS"/>
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="INFO_FILE"/>
+        <appender-ref ref="ERROR_FILE"/>
+    </logger>
+
+
+</included>
+
+        <!--
+        use blow include in your logback config,if you want output statistics to special file
+
+        <include resource="logback-statistics.xml" />
+        -->
